@@ -1,0 +1,150 @@
+Script started on Tue 10 Feb 2015 04:57:04 PM EST
+[16:57:04] bckenne@imp3:~/cpsc352/sde1 [1] ./motion < n3
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** scan/parse for valid motion path successful *****
+
+
+
+[16:57:25] bckenne@imp3:~/cpsc352/sde1 [2] ./motion < u2d2
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[16:57:33] bckenne@imp3:~/cpsc352/sde1 [3] ./motion < l42r42
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[16:57:40] bckenne@imp3:~/cpsc352/sde1 [4] ./motion < l0r4
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+syntax error
+[16:57:47] bckenne@imp3:~/cpsc352/sde1 [5] ./motion < udl2a
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+syntax error
+[16:58:02] bckenne@imp3:~/cpsc352/sde1 [6] ./motion < d_space
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+syntax error
+[16:58:21] bckenne@imp3:~/cpsc352/sde1 [7] ./motion < space_d
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+syntax error
+[16:58:40] bckenne@imp3:~/cpsc352/sde1 [8] ./motion < u_space_u
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+syntax error
+[16:58:49] bckenne@imp3:~/cpsc352/sde1 [9] ./motion < nnnnn
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** scan/parse for valid motion path successful *****
+
+
+
+[16:59:04] bckenne@imp3:~/cpsc352/sde1 [10] ./motion < u2nr2nd2nl2n
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[16:59:17] bckenne@imp3:~/cpsc352/sde1 [11] ./motion < u2d3l1r4
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** scan/parse for valid motion path successful *****
+
+
+
+[16:59:43] bckenne@imp3:~/cpsc352/sde1 [12] ./motion < u2d3l1r4nn
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** scan/parse for valid motion path successful *****
+
+
+
+[17:00:07] bckenne@imp3:~/cpsc352/sde1 [13] ./motion < uuddllrr
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[17:00:24] bckenne@imp3:~/cpsc352/sde1 [14] ./motion < uud2lr
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[17:00:35] bckenne@imp3:~/cpsc352/sde1 [15] ./motion < udlr
+
+Motion Trajectory Checker (Scanner/Parser)
+CPSC/ECE 3520 Spring 2015
+
+
+
+***** congratulations *****
+***** valid motion path AND CLOSED PATH *****
+
+
+
+[17:00:51] bckenne@imp3:~/cpsc352/sde1 [16] exit
+exit
+
+Script done on Tue 10 Feb 2015 05:00:55 PM EST

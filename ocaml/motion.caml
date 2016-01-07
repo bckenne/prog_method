@@ -1,0 +1,96 @@
+exception Failure of string;;
+let rec diffImRow (image1Row,image2Row) = 
+	match image1Row,image2Row with
+	| [],[] -> []
+	| hd1::tl1,hd2::tl2 -> hd2-hd1 :: diffImRow(tl1,tl2)
+	| _,_ -> [];;
+let rec diffIm(image1, image2) = 
+	match image1,image2 with
+	| [],[] -> []
+	| hd1::tl1,hd2::tl2 -> diffImRow(hd1,hd2) :: diffIm(tl1,tl2)
+	| _,_ -> [];;
+
+let rec nodiffRow(row) =
+	match row with
+	| [] -> true
+	| 0::tl -> nodiffRow(tl)
+	| hd::tl -> false;;
+
+let rec noDiff(diffimage) = 
+	match diffimage with
+	| [] -> true
+	| h::t -> if nodiffRow(h) = false then false else noDiff(t);;
+
+let rec printRow (row) = 
+	match row with
+	|[] -> print_string "\n"
+	| h::t -> print_int h ; print_string " " ; printRow (t);;
+
+let rec pp_my_image (s) =
+	match s with
+	| [] -> ();
+	| h::t -> printRow(h); pp_my_image(t);;
+
+let rec rowmaskpos(image2row,diffrow) = 
+	match image2row,diffrow with
+	| [],[] -> []
+	| h1::t1,h2::t2 -> if h2 > 0 then h1 :: rowmaskpos(t1,t2) else 0:: rowmaskpos(t1,t2)
+	| _,_ -> [];;
+
+let rec rowmaskneg(image1row,diffrow) = 
+	match image1row,diffrow with
+	| [],[] -> []
+	| h1::t1,h2::t2 -> if h2 < 0 then h1 :: rowmaskneg(t1,t2) else 0 :: rowmaskneg(t1,t2)
+	| _,_ -> [];;
+	
+let rec maskpos(image2,diffimage) = 
+	match image2,diffimage with
+	| [],[] -> [];
+	| h1::t1,h2::t2 -> rowmaskpos(h1,h2) :: maskpos(t1,t2)
+	| _,_ -> [];;
+
+
+let rec maskneg(image1,diffimage) = 
+	match image1,diffimage with
+	| [],[] -> []
+	| h1::t1,h2::t2 -> rowmaskneg(h1,h2) :: maskneg(t1,t2)
+	| _,_ -> [];;
+
+let tupledifffloat((i1,j1),(i2,j2)) = (i2 -. i1,j2 -. j1);;
+
+let rec sumImRow(row) = 
+	match row with
+	| [] -> 0;
+	| h::t -> h + sumImRow(t);;
+
+let rec sumImage(maskedImage) = 
+	match maskedImage with 
+	| [] -> 0
+	| h::t -> sumImRow(h)+sumImage(t);;
+
+let rec rowcentImRow(row,jindex) = 
+	match row,jindex with
+	|[],j -> 0
+	|h::t,j -> (j*h)+rowcentImRow(t,j+1);;
+
+let rec rowcentImCol(row,iindex) =
+	match row,iindex with
+	|[],i -> 0
+	|h::t,i -> (i*h)+rowcentImCol(t,i);;
+
+let rec centImRow(image,start_j) = 
+	match image,start_j with
+	|[],j -> 0
+	|h::t,j -> rowcentImRow(h,j) + centImRow(t,j);;
+
+let rec centImCol(image,start_i) =
+	match image,start_i with
+	|[],i -> 0
+	|h::t,i -> rowcentImCol(h,i) + centImCol(t,i+1);;
+
+let icent(image) = float_of_int(centImCol(image,1)) /. float_of_int(sumImage(image));;
+let jcent(image) = float_of_int(centImRow(image,1)) /. float_of_int(sumImage(image));;
+let motion(image1,image2) = if noDiff(diffIm(image1,image2)) = true 
+	then raise (Failure "there is no discernible motion") 
+	else tupledifffloat((icent(maskneg(image1,diffIm(image1,image2))),jcent(maskneg(image1,diffIm(image1,image2)))),(icent(maskpos(image2,diffIm(image1,image2))),jcent(maskpos(image2,diffIm(image1,image2)))));;
+	

@@ -1,0 +1,18 @@
+%{
+#include "motion.tab.h"
+YYSTYPE yylval;
+%}
+%option noinput
+%option nounput
+A_NUM [1-9][0-9]*
+%%
+u {return U;}
+d {return D;}
+l {return L;}
+r {return R;}
+n {return N;}
+{A_NUM} {yylval = atoi(yytext);
+		return NUM;}
+. {return ERR;}
+[ \t\n\r] {return ERR;}
+%%
